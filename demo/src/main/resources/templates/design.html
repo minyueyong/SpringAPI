@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http:/ /www.w3.org/1999/xhtml"
+	xmlns:th="http:/ /www.thymeleaf.org">
+<head>
+<title>Taco Cloud</title>
+<!--  <link rel="stylesheet" th:href="@{/styles.css}" />-->
+</head>
+
+<body>
+	<h1>Design your taco!</h1>
+	<img th:src="@{/images/logo.png}" />
+	
+	<form method="POST" th:object="${taco}" >
+		<div class="grid">
+		<!--  for each ingredient inside the wrap variable we put id as the value and text is the name -->
+			<div class="ingredient-group" id="wraps">
+				<h3>Designate your wrap:</h3>
+				<div th:each="ingredient : ${wrap}">
+					<input th:field="*{ingredients}" type="checkbox"
+						th:value="${ingredient.id}" /> <span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			<div class="ingredient-group" id="proteins">
+				<h3>Pick your protein:</h3>
+				<div th:each="ingredient : ${protein}">
+<!--   if ingredient.name is not available , will fall back to the word INGREDIENT -->
+					<input th:field="*{ingredients}" type="checkbox"
+						th:value="${ingredient.id}" /> <span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			<div class="ingredient-group" id="cheeses">
+				<h3>Choose your cheese:</h3>
+				<div th:each="ingredient : ${cheese}">
+<!--  th:field is for binding the check box to a spring form field -->
+					<input th:field="*{ingredients}" type="checkbox"
+						th:value="${ingredient.id}" /> <span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			<div class="ingredient-group" id="veggies">
+				<h3>Determine your veggies:</h3>
+				<div th:each="ingredient : ${veggies}">
+					<input th:field="*{ingredients}" type="checkbox"
+						th:value="${ingredient.id}" /> <span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+			<div class="ingredient-group" id="sauces">
+				<h3>Select your sauce:</h3>
+				<div th:each="ingredient : ${sauce}">
+<!--  th:field is setting the name of the input type to remember where or not the checkbox is checked
+<div> 
+<input name="ingredients" type="checkbox" value="FLTO" />
+<span> Flour Tortilla </span><br/>
+</div>
+
+-->
+					<input th:field="*{ingredients}" type="checkbox"
+						th:value="${ingredient.id}" /> <span th:text="${ingredient.name}">INGREDIENT</span><br />
+				</div>
+			</div>
+		</div>
+<!--  Everything you submit here will be bound to a Taco Object, as shown by the variables name and ingredients -->		
+		<div>
+			Processing form submission 
+			<h3>Name your taco creation:</h3>
+			<input type="text" th:field="*{name}" />
+			 <span class="validationError" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}">Taco Name Error</span> 
+			<br />
+			<button>Submit Your Taco</button>
+		</div>
+	</form>
+</body>
+</html>

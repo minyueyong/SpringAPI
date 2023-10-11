@@ -1,0 +1,5 @@
+Ways to store Users
+
+- In-memory user store
+- JDBC user store
+- LDAP user store

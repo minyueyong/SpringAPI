@@ -1,0 +1,55 @@
+Options for working with Relational Data
+
+
+1. JDBC
+
+- Both are for database Operations 
+
+- JdbcTemplate  ( high level , easy to use )
+- Refer JdbcIngredientRepository
+
+- JdbcOperations ( low level )
+- Refer JdbcOrderRepository
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+
+________________________________________________________________
+
+2. JPA
+
+3. Spring Data JDBC
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jdbc</artifactId>
+</dependency>
+
+- refer IngredientRepository & OrderRepository
+
+- don't need to write implementation
+- Annotating our classes with @Table and @Id
+- can't do guessing , so u must use @Query
+- @Query must be SQL queries, not JPA queries
+
+___________________________________________________
+
+4. Spring Data JPA
+
+- Annotating our classes with @Entity
+- Can do guessing by your query method name
+
+__________________________________________________
+
+5. Cassandra
+
+<dependency>
+
+	<groupId> org.springframework.boot </groupId>
+	<artifactId>spring-boot-starter-data-cassandra</artifactId>
+</dependency>
+
+
+

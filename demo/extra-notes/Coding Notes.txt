@@ -1,0 +1,39 @@
+Design.html
+_____________________________________________
+
+Attribute : 
+1) taco, provided by @ModelAttribute(name = "taco")
+- provide an empty taco object to design.html for form submission
+
+2) Provided by @ModelAttribute public void addIngredientsToModel(Model model)
+wrap , { Corn Tortilla, Corn Tortilla }
+protein , { Groundbeef , Carnitas }
+veggies , { Diced Tomatoes, Lettuce }
+cheese , { Cheddar, Monterrey Jack }
+sauce , { Salsa, Sour Cream }
+
+- attribute name along with List of <Ingredient >
+
+3) @SessionAttributes("tacoOrder")
+- ensure that tacoOrder persist across multiple requests made by the same user during their session.
+
+After submit , will go to processTaco method in DesignTacoController
+- will add the taco inside taco Order
+- will automatically call IngredientByIdConverter to convert the ingredient ID we get from design.html into Ingredient
+
+
+We didn't declare the action inside Design.html so how did Spring know which Controller method to call??
+<form method="POST" th:object="${taco}" >
+- Spring automatically look for a POST method with @ModelAttribute Taco
+
+
+______________________________________________________________________________________________________________
+
+OrderForm.html
+
+We have to put action here 
+form method="POST" th:action="@{/orders}" th:object="${tacoOrder}">
+Or else will have error because there is 2 POST method which take in TacoOrder as model Attribute
+
+- Inside OrderController we don't need to provide a @ModelAttribute TacoOrder anymore because we already do it in DesignTacoController 
+  and since our @SessionAttribute TacoOrder span multiple requests

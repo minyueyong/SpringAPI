@@ -1,0 +1,20 @@
+Methods you get when you extend CrudRepository :
+
+1) S save(S entity)
+- save a given entity
+
+2) Optional<T> findById(ID id)
+
+- Retrives an entity by Id
+
+3) Iterable<T> findAll()
+
+- Returns all instance of the entity
+
+4) count ( )
+
+- returns the number of entities available
+
+5) deleteById ( ID id )
+
+6) 

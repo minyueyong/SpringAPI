@@ -1,0 +1,18 @@
+There are other view templates other than thymeleaf
+You only need to add their dependency inside pom.xml
+
+You don't need to put dependency if you are using JSP because it is provided by Tomcat or Jetty
+
+But Tomcat and Jetty containers usually look for JSP somewhere under /WEB-INF . 
+
+JSP is an option only if you are building your application as WAR file and deploying it in a traditional servlet container
+
+If you are building and executable JAR file , you must choose other templates like ThymeLeaf
+
+___________________________________________________________________________
+
+- Templates usually are cache only once
+
+- You can disable caching during development by spring.thymeleaf.cache = false
+
+- Devtools help us disable template caching but will disable itself when your application is deployed
