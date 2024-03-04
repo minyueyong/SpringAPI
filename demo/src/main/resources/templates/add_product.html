@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product</title>
+</head>
+
+<body>
+    <h1>Add New Product</h1>
+    
+    <form action="/product" method="get">
+		<button >Back to Listing</button> <br/><br/>
+	 </form>
+
+
+    <form method="POST" th:action="@{/add_product}" th:object="${products}" id="addForm">
+
+        <label for="code">Code:</label>
+        <input type="text" name="code" />
+        <span class="validationError" th:if="${#fields.hasErrors('code')}"
+				th:errors="*{code}"> Code Error</span>
+        </br><br/>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" />
+        <span class="validationError" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}"> Name Error</span>
+        </br><br/>
+
+        <label for="category">Category:</label>
+        <input type="text" name="category" />
+        <span class="validationError" th:if="${#fields.hasErrors('category')}"
+				th:errors="*{category}"> Category Error</span>
+        </br><br/>
+
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" />
+        </br><br/>
+
+        <label for="type">Type:</label>
+        <input type="text" name="type" /></br><br/>
+
+        <label for="description">Description:</label>
+        <textarea name="description"></textarea></br><br/>
+
+        <input type="submit" value="Save" />
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Product</title>
+</head>
+
+<body>
+    <h1>Edit Product</h1>
+    
+    <form action="/product" method="get">
+		<button>Back to Listing</button> <br/><br/>
+	</form>
+
+    <form method="POST" th:action="@{/edit_product}" th:object="${product}" id="editForm">
+
+        <label for="code">Code:</label>
+        <input type="text" name="code" th:value="${product.code}" disabled/>
+        </br><br/>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" th:value="${product.name}" />
+        <span class="validationError" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}"> Name Error</span>
+        </br><br/>
+
+        <label for="category">Category:</label>
+        <input type="text" name="category" th:value="${product.category}" />
+        <span class="validationError" th:if="${#fields.hasErrors('category')}"
+				th:errors="*{category}"> Category Error</span>
+        </br><br/>
+
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" th:value="${product.brand}" />
+        </br><br/>
+
+        <label for="type">Type:</label>
+        <input type="text" name="type" th:value="${product.type}" /></br><br/>
+
+        <label for="description">Description:</label>
+        <textarea name="description" th:text="${product.description}"></textarea></br><br/>
+
+		<input type="hidden" name="code" th:value="${product.code}" />
+		<input type="hidden" name="id" th:value="${product.id}" />
+        <input type="submit" value="Update" />
+
+    </form>
+</body>
+
+</html>

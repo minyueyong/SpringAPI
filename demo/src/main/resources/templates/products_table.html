@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http:/ /www.w3.org/1999/xhtml"
+	xmlns:th="http:/ /www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Table</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h2>Product Table</h2>
+
+<form action="/add_product" method="get">
+	<button >Add New Product</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="product : ${products}">
+      <td th:text="${product.id}"></td>
+      <td th:text="${product.code}"></td>
+      <td th:text="${product.name}"></td>
+      <td th:text="${product.category}"></td>
+      <td th:text="${product.brand}"></td>
+      <td th:text="${product.type}"></td>
+      <td th:text="${product.description}"></td>
+      <td> 
+		  <form action="/edit_product_page" method="post">
+			 <input type="hidden" name="productId" th:value="${product.id}" />
+			<button >Edit</button>
+		</form>
+	 </td>
+    </tr>
+	</div>  
+  </tbody> 	
+</table>
+
+	<div class="pagination">
+		  <a href="#">&laquo;</a>
+		  <a href="#">First</a>
+		  <a class="active" href="#">Previous</a>
+		  <a href="#">Next</a>
+		  <a href="#">Last</a>
+		  <a href="#">&raquo;</a>
+	 </div>	
+
+<script>
+  function openPopup() {
+    document.getElementById('productPopup').style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('productPopup').style.display = 'none';
+  }
+
+  function addProduct() {
+    // Add your logic to handle the new product data and update the table
+    // For simplicity, let's just close the popup for now
+    closePopup();
+  }
+</script>
+
+</body>
+</html>
